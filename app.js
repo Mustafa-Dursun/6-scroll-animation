@@ -1,4 +1,22 @@
-ScrollReveal().reveal('.headline', {delay:1000});
-ScrollReveal().reveal('.ani1', {delay:250});
-ScrollReveal().reveal('.ani2', {delay:500});
-ScrollReveal().reveal('.ani3', {delay:1000});
+const boxes = document.querySelectorAll('.box');
+
+
+window.addEventListener('scroll' , kaydirma);
+
+kaydirma();
+
+function kaydirma(){
+    console.log(window.innerHeight);
+    // const triggerBottom = (window.innerHeight /6)*5;
+    const triggerBottom = window.innerHeight /1.5;
+
+    boxes.forEach(box => {
+        // console.log(box.getBoundingClientRect().top)
+        const boxTop = box.getBoundingClientRect().top;
+        if(boxTop<triggerBottom){
+            box.classList.add('show');
+        }else{
+            box.classList.remove('show');
+        }
+    });
+}
